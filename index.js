@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 const app = express();
 const port = process.env.PORT || 3051;
 const vehiclesRouter = require('./routes/vehiclesRouter');
@@ -12,7 +13,7 @@ app.use(
 );
 
 app.get('/', (req, res) => {
-  res.json({'message': 'ok'});
+  res.sendFile(path.join(__dirname, 'index.html'));
 })
 
 app.use('/vehicles', vehiclesRouter);
