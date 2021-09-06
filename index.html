@@ -25,7 +25,7 @@ function drawPlayerMarker(x, y, name) {
 }
 
 var xmlhttp = new XMLHttpRequest();
-var url = "http://localhost:3051/vehicles";
+var url = "/vehicles";
 
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
