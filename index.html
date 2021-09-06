@@ -1,0 +1,28 @@
+<img src='http://blog.damonpollard.com/wp-content/uploads/2013/09/GTAV_SATELLITE_4096x4096.png' style="position: absolute">
+<canvas height='4096', width='4096', id='map' style='height: 4096px; width: 4096px; position: absolute; z-index: 9999'></canvas>
+<script>
+const ZeroX = 1878.00
+const ZeroY = 2761.10
+const Scale = 3.037861303705727
+function getPictureCoords(x, y) {
+  x = x/Scale
+  y = y/Scale
+  return {x: ZeroX + x , y: ZeroY - y} // Invert Y-axis
+}
+
+const ctx = document.getElementById('map').getContext('2d')
+ctx.fillStyle = 'red'
+
+function drawPlayerMarker(x, y, name) {
+	newCoords = getPictureCoords(x, y)
+	x = newCoords.x
+	y = newCoords.y
+	ctx.beginPath()
+	ctx.arc(x, y, 5, 0, 2 * Math.PI)
+	ctx.fill()
+	ctx.font = "25px Arial";
+	ctx.fillText(name, x - 15, y - 15)
+}
+
+drawPlayerMarker(0, 0, "CENTER")
+</script>
